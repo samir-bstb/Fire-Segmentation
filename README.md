@@ -1,14 +1,14 @@
-# 🔥 Wildfire Semantic Segmentation — Comparative Study
+# Wildfire Semantic Segmentation — Comparative Study
 
 A systematic comparison of five deep learning architectures for pixel-level wildfire segmentation, evaluated across three benchmark datasets under varying data availability conditions (25%, 50%, and 100% of training data).
 
 ---
 
-## 📌 Overview
+## Overview
 
 This repository contains the full implementation, training notebooks, and evaluation results for a comparative study between:
 
-- **UNet** (ResNet34 encoder + InceptionV3 encoder)
+- **UNet** (InceptionV3 encoder)
 - **SegFormer-B2** (Mix Transformer encoder, pretrained on ADE20K)
 - **DeepLabV3+** (ResNet50 encoder)
 - **EViT-UNet** (Efficient Vision Transformer UNet)
@@ -18,7 +18,7 @@ All models are trained and evaluated using 25%, 50%, and 100% of each dataset to
 
 ---
 
-## 📂 Datasets
+## Datasets
 
 | Dataset | Source | Description |
 |---|---|---|
@@ -28,10 +28,10 @@ All models are trained and evaluated using 25%, 50%, and 100% of each dataset to
 
 ---
 
-## 🧠 Models
+## Models
 
-### UNet (ResNet34 / InceptionV3)
-Classical encoder-decoder architecture with skip connections. Two encoder variants evaluated: ResNet34 (4 symmetric downsampling stages, naturally suited for UNet) and InceptionV3 (multi-scale parallel convolutions, adapted as encoder).
+### UNet (InceptionV3)
+Classical encoder-decoder architecture with skip connections. InceptionV3 (multi-scale parallel convolutions, adapted as encoder).
 
 ### SegFormer-B2
 Transformer-based segmentation model using a hierarchical Mix Transformer (MiT-B2) encoder and a lightweight MLP decoder. Pretrained on ADE20K segmentation data, providing a strong initialization advantage over ImageNet-pretrained CNN encoders.
@@ -47,7 +47,7 @@ Swin Transformer UNet augmented with DenseFire feature aggregation modules, desi
 
 ---
 
-## 📊 Evaluation Metrics
+## Evaluation Metrics
 
 All models are evaluated on the held-out test split using:
 
@@ -59,30 +59,7 @@ All models are evaluated on the held-out test split using:
 
 ---
 
-## 🗂️ Repository Structure
-
-```
-├── notebooks/
-│   ├── UNet_ResNet34_kaggle.ipynb
-│   ├── UNet_ResNet34_corsican.ipynb
-│   ├── UNet_ResNet34_boreal.ipynb
-│   ├── UNet_InceptionV3_kaggle.ipynb
-│   ├── UNet_InceptionV3_corsican.ipynb
-│   ├── SegFormer_kaggle.ipynb
-│   ├── SegFormer_corsican.ipynb
-│   ├── SegFormer_boreal.ipynb
-│   ├── DeepLabV3Plus_kaggle.ipynb
-│   ├── EViT_UNet.ipynb
-│   └── STUNet_DenseFire.ipynb
-├── results/
-│   ├── *.json               # Test results per model and split
-│   └── *.pth                # Saved model checkpoints
-└── README.md
-```
-
----
-
-## ⚙️ Training Setup
+## Training Setup
 
 | Parameter | Value |
 |---|---|
@@ -97,10 +74,6 @@ All models are evaluated on the held-out test split using:
 Data augmentation applied during training: horizontal flip, vertical flip, rotation, brightness/contrast adjustment, and normalization (ImageNet mean/std).
 
 ---
-
-## 🚀 Usage
-
-All notebooks are designed to run on **Google Colab** with GPU acceleration. Models and results are automatically saved to Google Drive to avoid re-training on subsequent runs.
 
 ```python
 # Each notebook follows the same structure:
@@ -118,7 +91,7 @@ If a trained model already exists in the save directory, it is loaded automatica
 
 ---
 
-## 📦 Dependencies
+## Dependencies
 
 ```
 torch
@@ -138,7 +111,7 @@ pip install segmentation-models-pytorch transformers albumentations
 
 ---
 
-## 📄 Citation
+## Citation
 
 If you use this code or results in your work, please cite accordingly. Dataset citations:
 
@@ -147,7 +120,3 @@ If you use this code or results in your work, please cite accordingly. Dataset c
 - **Fire Segmentation Image Dataset**: DI-VERSISai. Available at: https://www.kaggle.com
 
 ---
-
-## 📬 Contact
-
-For questions or collaboration, open an issue in this repository.
